@@ -1,0 +1,43 @@
+<tool id="spclust-v2a" name="SpCLUST-V2" version="2.0.0">
+	<description>Biological sequences clustering using GMM</description>
+	<command><![CDATA[
+		/home/galaxy/SpCLUST-V2/spclust-v2.sh $input $output $alignmode $mdist $cccriterion $nbruns $nestop $mattype
+	]]></command>
+	<inputs>
+		<param name="input" type="data" format="fasta"
+		label="Select the input fasta file" help="fasta file containing the sequences"/>
+		<param name="alignmode" type="select"
+		label="Select the desired alignment mode (None if the input fasta is alredy aligned)" help="alignment quality">
+			<option value="maxprecision" selected="True">Maximum precision alignment</option>
+			<option value="moderate">Moderate precision alignment</option>
+			<option value="fast">Fast alignment</option>
+			<option value="none">None</option>
+		</param>
+		<param name="mdist" type="select"
+		label="Select the desired distance matrix to be used" help="distance matrix">
+			<option value="ednafull" selected="True">EDNAFULL</option>
+			<option value="blosum62">BLOSUM62</option>
+			<option value="pam250">PAM250</option>
+		</param>
+		<param name="cccriterion" type="select"
+		label="Select the desired clustering choice criterion" help="clustering choice criterion">
+			<option value="bestbic" selected="True">Best BIC clustering</option>
+			<option value="mostfreq">Most frequent clustering</option>
+			<option value="fast">Fast clustering (single GMM run)</option>
+		</param>
+		<param name="nbruns" type="integer" value="500"
+		label="Indicate the desired number of GMM runs (positive integer). This parmeter is required for 'Best BIC' and 'Most frequent' criteria" help="number of GMM iterations"/>
+		<param name="nestop" type="integer" value="50"
+		label="Indicate the maximum number of allowed consecutive iterations if no improvement is detected (positive integer). This parmeter is required for BestBIC criterion only" help="iterations stop point"/>
+		<param name="mattype" type="select"
+		label="Select the desired affinity matrix type" help="affinity matrix type">
+			<option value="ul">Unnormalized Laplacian</option>
+			<option value="rwnl" selected="True">Random Walk Normalized Laplacian</option>
+			<option value="mod">Modularity</option>
+			<option value="bh">Bethe Hessian</option>
+		</param>
+	</inputs>
+	<outputs>
+		<data name="output" type="data" format="txt" label="${tool.name} on ${on_string}"/>
+	</outputs>
+</tool>

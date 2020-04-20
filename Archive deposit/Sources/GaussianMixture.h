@@ -1048,6 +1048,7 @@ double GaussianMixture::log_likelihood(){
 	delete[] s;
 	return a;
 } 
+
 void GaussianMixture::score_samples(double* s){
 	check_x(this->n_samples,this->n_components);
 	double** a = new double*[this->n_samples];
