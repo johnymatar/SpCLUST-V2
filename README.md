@@ -46,8 +46,8 @@ Follow the instructions in the README file in the Galaxy folder
 - Portable (can be used without installation)
 - Parallel computation for the distance matrix using MPI, thus enabling its use on omputation clusters.
 - Compatible for Galaxy integration
-- usage: mpispclust -in [input fasta file] -out [output clustering file] -alignMode [alignment mode] -mdist [scoring matrix] -ccCriterion [clustering choice criterion] -nbRuns [maximum number of GMM runs] -neStop [nb of runs with no emprovement to stop]
-     or: mpiexec -n [number of slave processes] spclust -in [input fasta file] -out [output clustering file] -alignMode [alignment mode] -mdist [scoring matrix] -ccCriterion [clustering choice criterion] -nbRuns [maximum number of GMM runs] -neStop [nb of runs with no emprovement to stop]
+- usage: mpispclust -in [input fasta file] -out [output clustering file] -alignMode [alignment mode] -mdist [scoring matrix] -ccCriterion [clustering choice criterion] -nbRuns [maximum number of GMM runs] -neStop [nb of runs with no emprovement to stop]  -matType [affinity matrix type]
+     or: mpiexec -n [number of slave processes] spclust -in [input fasta file] -out [output clustering file] -alignMode [alignment mode] -mdist [scoring matrix] -ccCriterion [clustering choice criterion] -nbRuns [maximum number of GMM runs] -neStop [nb of runs with no emprovement to stop]  -matType [affinity matrix type]
 
   Available scoring matrices are EDNAFULL, BLOSUM62, and PAM250. Defaults to EDNAFULL if not specified.
   Available alignment modes are: none, fast, moderate, and maxPrecision. none considers the input sequences aligned and does not perforn any alignment. fast and moderate limit the number of iterations for the alignment to 2 and 4 respectively (using MUSCLE). Defaults to maxPrecision if not specified.
@@ -56,3 +56,4 @@ Follow the instructions in the README file in the Galaxy folder
     neStop is ignored for the clustering choice criterion mostFreq. GMM will be run nbRuns times and the most occurent clustering will be chosen.
     nbRuns and neStop are ignored for the clustering choice criterion fast. GMM will be run only once.
     If not specified, nbRuns defaults to 500 and neStop defaults to 50.
+  Available affinity matrices types are UL (Unnormalized Laplacian), RWNL (Random Walk Normalized Laplacian), MOD (Modularity), and BH (Bethe Hessian). Defaults to RWNL if not specified.
