@@ -16,7 +16,7 @@ SpCLUST-V2 uses MPI for parallel computation and the executable building for the
 # Installation on Linux
 - Get the installation package from the "Linux" folder in our repository: "wget https://github.com/johnymatar/SpCLUST-V2/raw/master/Linux/install.tar.xz"
 - Extract the package: "tar -xvf install.tar.xz"
-- Run the following commands: "cd SpCLUST-V2", "./configure", "make"
+- Run the following commands: "cd install", "./configure", "make"
 - Run the following command as a sudoer: "make install"
 - You can now call the executables with the desired arguments
 - For serial computation use "spclust" with the desired arguments
